@@ -5,13 +5,24 @@ const typeDefs = gql`
     name: String!
   }
 
+  type Todo {
+    text: String!
+    isCompleted: Boolean!
+    userId: ID!
+  }
+
   type Query {
     user(id: ID!): User
-    users: [User]
+    users: [User!]
+    todos(userId: ID!): [Todo!]
+    me: User
   }
 
   type Mutation {
     signup(name: String!): User
+    createTodo(text: String!, userId: ID!): Todo!
+    updateTodo: Todo!
+    deleteTodo: Todo!
   }
 `
 
