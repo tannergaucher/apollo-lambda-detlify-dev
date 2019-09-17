@@ -1,15 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server-lambda')
 const { resolvers } = require('../resolvers')
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-
-  type Mutation {
-    test: String
-  }
-`
+const { typeDefs } = require('../schema')
 
 const server = new ApolloServer({
   typeDefs,
