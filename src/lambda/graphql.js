@@ -4,8 +4,6 @@ const { typeDefs } = require('../schema')
 const models = require('../models')
 const mongoose = require('mongoose')
 
-require('dotenv').config()
-
 const server = new ApolloServer({
   typeDefs,
   resolvers,

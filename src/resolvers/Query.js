@@ -1,12 +1,12 @@
 const Query = {
-  user: async (parent, { id }, { models }) => {
-    return await models.User.findById(id)
+  user: async (parent, { id }, context) => {
+    return await context.models.User.findById(id)
   },
-  users: async (parent, args, { models }) => {
-    return await models.User.find()
+  users: async (parent, args, context) => {
+    return await context.models.User.find()
   },
-  todos: async (parent, { userId }, { models }) => {
-    const todos = await models.Todo.find({
+  todos: async (parent, { userId }, context) => {
+    const todos = await context.models.Todo.find({
       userId,
     })
 
@@ -15,7 +15,6 @@ const Query = {
 
   me: async (parent, args, context) => {
     // getUserID
-
     // get user
     // get todos
     //

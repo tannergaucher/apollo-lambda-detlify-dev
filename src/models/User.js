@@ -6,9 +6,15 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  // email
-  // password
-  todos: [{ type: mongoose.Schema.ObjectId, ref: 'Todo' }],
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 })
 
 module.exports = mongoose.model('User', userSchema)

@@ -3,12 +3,19 @@ const { gql } = require('apollo-server-lambda')
 const typeDefs = gql`
   type User {
     name: String!
+    email: String!
+    password: String!
   }
 
   type Todo {
     text: String!
     isCompleted: Boolean!
     userId: ID!
+  }
+
+  type AuthPayload {
+    token: String!
+    user: User!
   }
 
   type Query {
@@ -19,8 +26,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    signup(name: String!): User
-    createTodo(text: String!, userId: ID!): Todo!
+    signup(name: String!, email: String!, password: String!): AuthPayload!
+    createTodo(text: String!): Todo!
     updateTodo: Todo!
     deleteTodo: Todo!
   }
