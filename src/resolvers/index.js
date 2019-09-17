@@ -1,9 +1,19 @@
-const { Mutation } = require('./Mutation')
-const { Query } = require('./Query')
-
 const resolvers = {
-  Mutation,
-  Query,
+  Query: {
+    user: async (parent, { id }, { models }) => {
+      return await models.User.findById(id)
+    },
+  },
+  Mutation: {
+    signup: async (parent, { name }, { models }) => {
+      const user = await models.User.create({
+        name,
+      })
+      return {
+        user,
+      }
+    },
+  },
 }
 
 module.exports = {

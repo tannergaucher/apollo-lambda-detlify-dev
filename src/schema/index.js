@@ -2,11 +2,15 @@ const { gql } = require('apollo-server-lambda')
 
 const typeDefs = gql`
   type Query {
-    hello: String
+    user: User
   }
 
   type Mutation {
-    test: String
+    signup(name: String!): User
+  }
+
+  type User {
+    name: String!
   }
 `
 
