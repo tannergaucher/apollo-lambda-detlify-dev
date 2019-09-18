@@ -64,14 +64,23 @@ const Mutation = {
   },
 
   updateTodo: async (parent, { id, text }, { db, request }) => {
-    const userId = getUserId(request)
-
+    // TODO check that user owns todo
     const todo = await db.Todo.findById(id)
     todo.text = text
     await todo.save()
 
     return todo
   },
+
+  toggleCompleted: async (parent, { id }, { db }) => {
+    const todo = await db.Todo.findById(id)
+
+    todo.isCompleted = !todo.isCompleted
+    await todo.save()
+
+    return todo
+  },
+
   deleteTodo: async (parent, { id }, { db }) => {
     // TODO check that user owns todo
     await db.Todo.findByIdAndDelete(id)

@@ -34,6 +34,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): AuthPayload!
     createTodo(text: String!): Todo!
     updateTodo(id: ID!, text: String!): Todo!
+    toggleCompleted(id: ID!): Todo!
     deleteTodo(id: ID!): SuccessMessage
   }
 `
