@@ -4,13 +4,20 @@ const { typeDefs } = require('../schema')
 const models = require('../models')
 const mongoose = require('mongoose')
 
+const { models: db } = models
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   introspection: true,
   playground: true,
-  context: async () => {
-    return models
+  context: async request => {
+    // connect to db here
+
+    return {
+      db,
+      request,
+    }
   },
 })
 

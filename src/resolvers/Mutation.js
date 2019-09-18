@@ -1,12 +1,10 @@
-const { hashSync, genSaltSync } = require('bcryptjs') // because bcrypt isn't installing
+const { hashSync, genSaltSync } = require('bcryptjs') // because bcrypt wont install
 const { sign } = require('jsonwebtoken')
 
 const Mutation = {
   signup: async (parent, { name, email, password }, context) => {
     const salt = genSaltSync(10)
     const hashedPassword = hashSync(password, salt)
-
-    console.log(context)
 
     const user = await context.models.User.create({
       name,
@@ -22,6 +20,12 @@ const Mutation = {
     }
   },
 
+  login: async (parent, args, context) => {
+    // get userId from context
+    // const user = await context.models.User.findById(id)
+
+    return
+  },
   createTodo: async (parent, { text }, { models }) => {
     const todo = await models.Todo.create({
       text,
