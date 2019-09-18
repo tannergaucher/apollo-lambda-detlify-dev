@@ -62,6 +62,7 @@ const Mutation = {
 
     return todo
   },
+
   updateTodo: async (parent, args, context) => {
     // TODO
     return

@@ -1,14 +1,6 @@
 const { getUserId } = require('../utils/get-user-id')
 
 const Query = {
-  todos: async (parent, { userId }, { db }) => {
-    const todos = await db.Todo.find({
-      userId,
-    })
-
-    return todos
-  },
-
   me: async (parent, args, { db, request }) => {
     const userId = getUserId(request)
 

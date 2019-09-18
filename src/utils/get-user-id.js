@@ -7,14 +7,12 @@ class AuthError extends Error {
 }
 
 function getUserId(request) {
-  // because requet.get('Authorization') not working
-  const authorization = request.event.headers.authorization
+  const authorization = request.event.headers.authorization // because request.get('Authorization') not working
 
   if (authorization) {
-    const token = authorization.replace('Bearer ', '')
+    const token = authorization.replace('Bearer ', '') // Need a space after Bearer
 
-    // replace with process.env.APP_SECRET
-    const verifiedToken = verify(token, 'verysekret123')
+    const verifiedToken = verify(token, 'verysekret123') // replace with process.env.APP_SECRET
 
     return verifiedToken && verifiedToken.userId
   }

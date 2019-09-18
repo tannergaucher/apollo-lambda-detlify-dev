@@ -1,10 +1,19 @@
 const { ApolloServer } = require('apollo-server-lambda')
 const { resolvers } = require('../resolvers')
 const { typeDefs } = require('../schema')
-const models = require('../models')
+const { models: db } = require('../models')
 const mongoose = require('mongoose')
 
-const { models: db } = models
+// Connect to db.
+try {
+  await mongoose.connect(
+    // Replace with process.env.DATABASE_URL
+    'mongodb+srv://Tanner:tanner@cluster0-3e5sp.mongodb.net/test?retryWrites=true&w=majority',
+    { useNewUrlParser: true }
+  )
+} catch (error) {
+  console.log(error)
+}
 
 const server = new ApolloServer({
   typeDefs,
@@ -18,15 +27,5 @@ const server = new ApolloServer({
     }
   },
 })
-
-mongoose
-  .connect(
-    'mongodb+srv://Tanner:tanner@cluster0-3e5sp.mongodb.net/test?retryWrites=true&w=majority',
-    { useNewUrlParser: true }
-  )
-  .then(() => {
-    console.log('connected')
-  })
-  .catch(err => console.log(err))
 
 exports.handler = server.createHandler()

@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
-import { useQuery } from '@apollo/react-hooks'
+import React from 'react'
+import { ApolloProvider } from '@apollo/react-hooks'
 
-import { TODOS_QUERY } from '../apollo/graphql'
+import { client } from '../apollo/client'
+import { Header, Main, Footer } from '.'
 
 export default function App() {
   return (
-    <div>
-      <header>App</header>
-    </div>
+    <ApolloProvider client={client}>
+      <Header />
+      <Main />
+      <Footer />
+    </ApolloProvider>
   )
 }
