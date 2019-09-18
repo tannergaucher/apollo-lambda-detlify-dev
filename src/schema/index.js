@@ -21,6 +21,10 @@ const typeDefs = gql`
     user: User!
   }
 
+  type SuccessMessage {
+    message: String!
+  }
+
   type Query {
     me: User
   }
@@ -29,8 +33,8 @@ const typeDefs = gql`
     signup(name: String!, email: String!, password: String!): AuthPayload!
     login(email: String!, password: String!): AuthPayload!
     createTodo(text: String!): Todo!
-    updateTodo(id: ID!): Todo!
-    deleteTodo(id: ID!): Todo!
+    updateTodo(id: ID!, text: String!): Todo!
+    deleteTodo(id: ID!): SuccessMessage
   }
 `
 

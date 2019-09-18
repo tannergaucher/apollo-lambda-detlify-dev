@@ -52,7 +52,7 @@ const Mutation = {
     const userId = getUserId(request)
 
     if (!userId) {
-      throw new Error(`You must me logged in for that.`)
+      throw new Error(`You must me logged in.`)
     }
 
     const todo = await db.Todo.create({
@@ -63,13 +63,22 @@ const Mutation = {
     return todo
   },
 
-  updateTodo: async (parent, args, context) => {
-    // TODO
-    return
+  updateTodo: async (parent, { id, text }, { db, request }) => {
+    const userId = getUserId(request)
+
+    const todo = await db.Todo.findById(id)
+    todo.text = text
+    await todo.save()
+
+    return todo
   },
-  deleteTodo: async (parent, args, context) => {
-    // TODO
-    return
+  deleteTodo: async (parent, { id }, { db }) => {
+    // TODO check that user owns todo
+    await db.Todo.findByIdAndDelete(id)
+
+    return {
+      message: 'You deleted a todo!',
+    }
   },
 }
 
