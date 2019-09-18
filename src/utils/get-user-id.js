@@ -6,12 +6,15 @@ class AuthError extends Error {
   }
 }
 
-function getUserId(context) {
-  const Authorization = context.request.get('Authorization')
+function getUserId(request) {
+  // because requet.get('Authorization') not working
+  const authorization = request.event.headers.authorization
 
-  if (Authorization) {
-    const token = Authorization.replace('Bearer ', '')
-    const verifiedToken = verify(token, process.env.APP_SECRET)
+  if (authorization) {
+    const token = authorization.replace('Bearer ', '')
+
+    // replace with process.env.APP_SECRET
+    const verifiedToken = verify(token, 'verysekret123')
 
     return verifiedToken && verifiedToken.userId
   }

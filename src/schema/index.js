@@ -25,11 +25,12 @@ const typeDefs = gql`
     user(id: ID!): User
     users: [User!]
     todos(userId: ID!): [Todo!]
+    me: User
   }
 
   type Mutation {
     signup(name: String!, email: String!, password: String!): AuthPayload!
-    login(name: String!, email: String!, password: String!): AuthPayload!
+    login(email: String!, password: String!): AuthPayload!
     createTodo(text: String!): Todo!
     updateTodo(id: ID!): Todo!
     deleteTodo(id: ID!): Todo!

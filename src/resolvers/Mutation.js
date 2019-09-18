@@ -22,7 +22,6 @@ const Mutation = {
 
   login: async (parent, args, { db }) => {
     // get userId from request
-
     // const user = await context.models.User.findById(id)
 
     return

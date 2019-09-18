@@ -12,8 +12,6 @@ const server = new ApolloServer({
   introspection: true,
   playground: true,
   context: async request => {
-    // connect to db here
-
     return {
       db,
       request,
