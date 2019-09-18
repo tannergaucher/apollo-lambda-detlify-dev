@@ -1,15 +1,10 @@
+const mongoose = require('mongoose')
 const { ApolloServer } = require('apollo-server-lambda')
 const { resolvers } = require('../resolvers')
 const { typeDefs } = require('../schema')
 const { models: db } = require('../models')
-const mongoose = require('mongoose')
 
-// Connect to db.
-mongoose.connect(
-  // Replace with process.env.DATABASE_URL
-  'mongodb+srv://Tanner:tanner@cluster0-3e5sp.mongodb.net/test?retryWrites=true&w=majority',
-  { useNewUrlParser: true }
-)
+mongoose.connect(process.env.REACT_APP_DATABASE_URL, { useNewUrlParser: true })
 
 const server = new ApolloServer({
   typeDefs,

@@ -14,7 +14,7 @@ const Mutation = {
       password: hashedPassword,
     })
 
-    const token = sign({ userId: user._id }, 'verysekret123')
+    const token = sign({ userId: user._id }, process.env.REACT_APP_APP_SECRET)
 
     return {
       user,
@@ -39,8 +39,7 @@ const Mutation = {
       throw new Error(`Invalid password`)
     }
 
-    // // replace with process.env.APP_SECRET
-    const token = sign({ userId: user._id }, 'verysekret123')
+    const token = sign({ userId: user._id }, process.env.REACT_APP_APP_SECRET)
 
     return {
       user,
@@ -74,7 +73,6 @@ const Mutation = {
 
   toggleCompleted: async (parent, { id }, { db }) => {
     const todo = await db.Todo.findById(id)
-
     todo.isCompleted = !todo.isCompleted
     await todo.save()
 
