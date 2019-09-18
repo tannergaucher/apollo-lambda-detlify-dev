@@ -1,8 +1,10 @@
 const User = {
-  todos: async (parent, args, { db }) => {
-    //   get the userIDfrom context
-    // get todos with is userID of UserID
-    return
+  todos: async ({ id }, args, { db }) => {
+    const todos = await db.Todo.find({
+      userId: id,
+    })
+
+    return todos
   },
 }
 
