@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useMutation, useApolloClient } from '@apollo/react-hooks'
+import { navigate } from '@reach/router'
 import { SIGNUP_MUTATION } from '../apollo/graphql'
 
 export default function Signup() {
@@ -23,13 +24,13 @@ export default function Signup() {
           e.preventDefault()
           const { data } = await signup()
           localStorage.setItem('token', data.signup.token)
-
           client.writeData({
             data: {
               isLoggedIn: true,
               me: data.signup.user,
             },
           })
+          navigate('/')
         }}
         style={{
           display: `flex`,

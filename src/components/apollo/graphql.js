@@ -88,3 +88,11 @@ export const CREATE_TODO_MUTATION = gql`
   }
   ${TODO_FRAGMENT}
 `
+
+export const DELETE_TODO_MUTATION = gql`
+  mutation DELETE_TODO_MUTATION($id: ID!) {
+    deleteTodo(id: $id) {
+      message
+    }
+  }
+`
