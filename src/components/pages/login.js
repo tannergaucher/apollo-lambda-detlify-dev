@@ -1,10 +1,12 @@
 import React from 'react'
 
+import { Login } from '../auth'
+
 export default function LoginPage() {
   return (
-    <div>
+    <>
       Login Page
-      {/*  */}
-    </div>
+      <Login />
+    </>
   )
 }
