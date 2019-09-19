@@ -31,8 +31,6 @@ const Mutation = {
       throw new AuthError()
     }
 
-    console.log(user)
-
     const passwordValid = compareSync(password, user.password)
 
     if (!passwordValid) {

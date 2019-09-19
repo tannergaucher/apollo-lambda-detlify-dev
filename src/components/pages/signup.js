@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Signup } from '../auth'
 
-export default function Signup() {
+export default function SignupPage() {
   return (
     <>
       Signup Page

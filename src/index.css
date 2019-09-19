@@ -1,3 +1,23 @@
+:root {
+  --light-1: #ffffff;
+  --light-2: #f2f2f2;
+  --light-3: #ededed;
+  --light-4: #dadada;
+  --dark-1: #000000;
+  --dark-2: #555555;
+  --dark-3: #777777;
+  --dark-4: #999999;
+  --warning: #ff4040;
+  --success: #00c781;
+  --disabled: #cccccc;
+  --one: 1vw;
+  --two: 2vw;
+  --three: 3vw;
+  --four: 4vw;
+  --five: 5vw;
+  --six: 6vw;
+}
+
 body {
   margin: 0;
   padding: 0;
