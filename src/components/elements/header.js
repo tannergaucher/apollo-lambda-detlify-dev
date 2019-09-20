@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link } from '@reach/router'
 import { useQuery } from '@apollo/react-hooks'
-
 import { Logout } from '../auth'
-
 import { IS_LOGGED_IN_QUERY } from '../apollo/graphql'
 
 export default function Header() {

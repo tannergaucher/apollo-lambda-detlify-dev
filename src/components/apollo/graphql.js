@@ -7,6 +7,7 @@ export const USER_FRAGMENT = gql`
     email
     password
     todos {
+      # TODO pass in subfragment here
       id
       isCompleted
       text

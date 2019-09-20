@@ -1,6 +1,5 @@
 import React from 'react'
 import { Router } from '@reach/router'
-
 import { Home, Login, Signup } from '../pages'
 
 export default function Main() {

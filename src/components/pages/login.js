@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from '@reach/router'
-
 import { Login } from '../auth'
 
 export default function LoginPage() {

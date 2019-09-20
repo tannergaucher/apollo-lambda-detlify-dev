@@ -10,9 +10,9 @@ function getUserId(request) {
   const authorization = request.event.headers.authorization // because request.get('Authorization') not working
 
   if (authorization) {
-    const token = authorization.replace('Bearer ', '') // Need a space after Bearer
+    const token = authorization.replace('Bearer ', '') // Need a space after Bearer.
 
-    const verifiedToken = verify(token, 'verysekret123') // replace with process.env.APP_SECRET
+    const verifiedToken = verify(token, process.env.REACT_APP_APP_SECRET)
 
     return verifiedToken && verifiedToken.userId
   }
