@@ -22,7 +22,6 @@ const server = new ApolloServer({
 exports.handler = server.createHandler({
   cors: {
     credentials: true,
-    // TODO: how to set env var here?
     origin: process.env.REACT_APP_CLIENT_URL,
   },
 })
