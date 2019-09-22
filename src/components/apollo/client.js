@@ -4,7 +4,7 @@ import { createHttpLink } from 'apollo-link-http'
 import { setContext } from 'apollo-link-context'
 
 const httpLink = createHttpLink({
-  uri: process.env.REACT_APP_SITE_URL + '/.netlify/functions/graphql',
+  uri: process.env.REACT_APP_SERVER_URL + '/.netlify/functions/graphql',
   credentials: 'include',
 })
 
